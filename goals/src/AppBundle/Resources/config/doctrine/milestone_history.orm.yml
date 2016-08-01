@@ -1,0 +1,19 @@
+AppBundle\Entity\milestone_history:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\milestone_historyRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        milestoneId:
+            type: integer
+            column: milestone_id
+        value:
+            type: integer
+        timestamp:
+            type: datetime
+    lifecycleCallbacks: {  }

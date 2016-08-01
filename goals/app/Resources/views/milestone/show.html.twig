@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>milestone</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ milestone.id }}</td>
+            </tr>
+            <tr>
+                <th>Goalid</th>
+                <td>{{ milestone.goalId }}</td>
+            </tr>
+            <tr>
+                <th>Typeid</th>
+                <td>{{ milestone.typeId }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ milestone.name }}</td>
+            </tr>
+            <tr>
+                <th>Percentofgoal</th>
+                <td>{{ milestone.percentOfGoal }}</td>
+            </tr>
+            <tr>
+                <th>Currentprogress</th>
+                <td>{{ milestone.currentProgress }}</td>
+            </tr>
+            <tr>
+                <th>Target</th>
+                <td>{{ milestone.target }}</td>
+            </tr>
+            <tr>
+                <th>Targetdate</th>
+                <td>{% if milestone.targetDate %}{{ milestone.targetDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('milestone_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('milestone_edit', { 'id': milestone.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

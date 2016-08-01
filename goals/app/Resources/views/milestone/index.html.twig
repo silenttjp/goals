@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>milestone list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Goalid</th>
+                <th>Typeid</th>
+                <th>Name</th>
+                <th>Percentofgoal</th>
+                <th>Currentprogress</th>
+                <th>Target</th>
+                <th>Targetdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for milestone in milestones %}
+            <tr>
+                <td><a href="{{ path('milestone_show', { 'id': milestone.id }) }}">{{ milestone.id }}</a></td>
+                <td>{{ milestone.goalId }}</td>
+                <td>{{ milestone.typeId }}</td>
+                <td>{{ milestone.name }}</td>
+                <td>{{ milestone.percentOfGoal }}</td>
+                <td>{{ milestone.currentProgress }}</td>
+                <td>{{ milestone.target }}</td>
+                <td>{% if milestone.targetDate %}{{ milestone.targetDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('milestone_show', { 'id': milestone.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('milestone_edit', { 'id': milestone.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('milestone_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

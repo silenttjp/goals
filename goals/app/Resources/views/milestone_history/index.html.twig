@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>milestone_history list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Milestoneid</th>
+                <th>Value</th>
+                <th>Timestamp</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for milestone_history in milestone_histories %}
+            <tr>
+                <td><a href="{{ path('milestone_history_show', { 'id': milestone_history.id }) }}">{{ milestone_history.id }}</a></td>
+                <td>{{ milestone_history.milestoneId }}</td>
+                <td>{{ milestone_history.value }}</td>
+                <td>{% if milestone_history.timestamp %}{{ milestone_history.timestamp|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('milestone_history_show', { 'id': milestone_history.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('milestone_history_edit', { 'id': milestone_history.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('milestone_history_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
