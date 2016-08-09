@@ -1,84 +1,25 @@
 <?php
-
 namespace AppBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * user
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user")
  */
-class user
+class user extends BaseUser
 {
     /**
-     * @var int
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
-    /**
-     * @var string
-     */
-    private $username;
-
-    /**
-     * @var string
-     */
-    private $password;
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
-    }
-
-    /**
-     * Set username
-     *
-     * @param string $username
-     *
-     * @return user
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * Get username
-     *
-     * @return string
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return user
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
+        parent::__construct();
+        // your own logic
     }
 }
-
